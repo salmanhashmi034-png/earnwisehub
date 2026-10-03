@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Disallow internal/utility paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /search?q=
+
+# Sitemap location
+# ⚠️ Replace earnwisehub.com with your real domain
+Sitemap: https://earnwisehub.com/sitemap.xml
