@@ -133,6 +133,12 @@ export default function RootLayout({
             crossOrigin="anonymous"
           />
         )}
+
+        {/* Adsterra Social Bar / In-page Push */}
+        <script
+          type="text/javascript"
+          src="https://bicea.org/14/432099dc5cf0707c59ef5f563d358236"
+        />
       </head>
       <body className="flex flex-col min-h-screen">
         {/* Skip to main content for accessibility */}
