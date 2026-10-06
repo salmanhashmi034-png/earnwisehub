@@ -3,6 +3,8 @@ import { siteConfig } from "@/lib/config";
 import { allArticles } from "@/lib/articles";
 import { categories } from "@/lib/categories";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url;
 

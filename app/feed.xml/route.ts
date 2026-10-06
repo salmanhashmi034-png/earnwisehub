@@ -2,6 +2,8 @@ import { siteConfig } from "@/lib/config";
 import { allArticles } from "@/lib/articles";
 import { getCategoryName } from "@/lib/categories";
 
+export const dynamic = "force-static";
+
 export async function GET() {
   const sorted = [...allArticles].sort(
     (a, b) =>
