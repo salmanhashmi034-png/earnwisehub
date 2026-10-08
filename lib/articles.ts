@@ -28,6 +28,8 @@ import { article as androidTravelApps } from "./articles/android-travel-apps-202
 import { article as androidPhotoEditingApps } from "./articles/android-photo-editing-apps-2026";
 import { article as denvorkWatchAds } from "./articles/denvork-watch-ads-earn";
 import { article as denvorkWithdrawal } from "./articles/denvork-withdrawal-details";
+import { article as watchVideosEarnMoneyMobileLoad } from "./articles/watch-videos-earn-money-mobile-load";
+import { article as watchAdsEarnMoney5DollarReward } from "./articles/watch-ads-earn-money-5-dollar-reward";
 // --- Original EarnWiseHub articles ---
 import { article as howToStartFreelancing } from "./articles/how-to-start-freelancing";
 import { article as howToBuildFreelancePortfolio } from "./articles/how-to-build-freelance-portfolio";
@@ -57,6 +59,8 @@ import { article as onlineEarningScams } from "./articles/online-earning-scams-t
 
 // Master article list – newest first
 export const allArticles: Article[] = [
+  watchVideosEarnMoneyMobileLoad,
+  watchAdsEarnMoney5DollarReward,
   // Android & DroidNestApp articles
   denvorkWithdrawal,
   denvorkWatchAds,
