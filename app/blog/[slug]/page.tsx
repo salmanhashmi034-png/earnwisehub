@@ -12,6 +12,7 @@ import { getCategoryBySlug } from "@/lib/categories";
 import { siteConfig } from "@/lib/config";
 import ArticleCard from "@/components/blog/ArticleCard";
 import NewsletterSignup from "@/components/blog/NewsletterSignup";
+import SocialShare from "@/components/blog/SocialShare";
 import AdPlaceholder from "@/components/ui/AdPlaceholder";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import {
@@ -68,11 +69,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
+const shortCodeMap: Record<string, string> = {
+  "watch-videos-earn-money-mobile-load": "load100",
+  "watch-ads-earn-money-5-dollar-reward": "ads5",
+  "denvork-watch-ads-earn": "denvork",
+  "upwork-beginner-guide": "upwork",
+  "fiverr-beginner-guide": "fiverr",
+  "how-to-start-freelancing": "freelance",
+};
+
 export default async function ArticlePage({ params }: PageProps) {
   const { slug } = await params;
   const article = getArticleBySlug(slug);
   if (!article) notFound();
 
+  const shortCode = shortCodeMap[slug] || slug;
   const category = getCategoryBySlug(article.category);
   const relatedArticles = getRelatedArticles(article, 3);
 
@@ -140,7 +151,7 @@ export default async function ArticlePage({ params }: PageProps) {
 
             {/* Featured Image */}
             {article.featuredImage && (
-              <figure className="mb-8 rounded-2xl overflow-hidden border border-gray-200/80 shadow-md bg-gray-950">
+              <figure className="mb-6 rounded-2xl overflow-hidden border border-gray-200/80 shadow-md bg-gray-950">
                 <img
                   src={article.featuredImage}
                   alt={article.featuredImageAlt || article.title}
@@ -149,6 +160,9 @@ export default async function ArticlePage({ params }: PageProps) {
                 />
               </figure>
             )}
+
+            {/* Quick Social Share Bar */}
+            <SocialShare slug={slug} title={article.title} shortCode={shortCode} variant="bar" />
 
             {/* Affiliate disclosure banner */}
             {article.affiliateDisclosure && (
@@ -175,6 +189,9 @@ export default async function ArticlePage({ params }: PageProps) {
                 dangerouslySetInnerHTML={{ __html: article.content }}
               />
             </article>
+
+            {/* Social Share & Short Link Box */}
+            <SocialShare slug={slug} title={article.title} shortCode={shortCode} variant="box" />
 
             {/* Sources */}
             {article.sources.length > 0 && (
