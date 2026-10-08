@@ -15,7 +15,17 @@ export default function ArticleCard({ article, variant = "default" }: ArticleCar
 
   if (variant === "horizontal") {
     return (
-      <article className="card flex gap-4 p-4 sm:p-5">
+      <article className="card flex gap-4 p-4 sm:p-5 items-center">
+        {article.featuredImage && (
+          <Link href={articleHref} className="w-28 sm:w-36 aspect-[16/10] rounded-lg overflow-hidden bg-gray-100 flex-shrink-0 relative group/img">
+            <img
+              src={article.featuredImage}
+              alt={article.featuredImageAlt || article.title}
+              className="w-full h-full object-cover transition-transform duration-300 group-hover/img:scale-105"
+              loading="lazy"
+            />
+          </Link>
+        )}
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-2 flex-wrap">
             <Link
@@ -44,10 +54,16 @@ export default function ArticleCard({ article, variant = "default" }: ArticleCar
 
   if (variant === "featured") {
     return (
-      <article className="card group relative overflow-hidden bg-gradient-to-br from-brand-700 to-brand-900 text-white p-6 sm:p-8 flex flex-col justify-end min-h-[280px]">
-        <div className="absolute inset-0 opacity-10">
-          <div className="w-full h-full bg-gradient-to-br from-white/20 to-transparent" />
-        </div>
+      <article className="card group relative overflow-hidden bg-gradient-to-br from-brand-800 to-slate-900 text-white p-6 sm:p-8 flex flex-col justify-end min-h-[300px]">
+        {article.featuredImage && (
+          <img
+            src={article.featuredImage}
+            alt={article.featuredImageAlt || article.title}
+            className="absolute inset-0 w-full h-full object-cover opacity-25 group-hover:scale-105 transition-transform duration-700"
+            loading="lazy"
+          />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/70 to-transparent" />
         <div className="relative z-10">
           <div className="flex items-center gap-2 mb-3 flex-wrap">
             <Link
@@ -80,9 +96,20 @@ export default function ArticleCard({ article, variant = "default" }: ArticleCar
 
   // Default card
   return (
-    <article className="card group flex flex-col h-full">
-      {/* Colour bar */}
-      <div className="h-1.5 bg-gradient-to-r from-brand-400 to-brand-600 flex-shrink-0" />
+    <article className="card group flex flex-col h-full overflow-hidden">
+      {/* Card Image */}
+      {article.featuredImage ? (
+        <Link href={articleHref} className="block overflow-hidden aspect-[16/9] bg-gray-950 flex-shrink-0 relative group/img">
+          <img
+            src={article.featuredImage}
+            alt={article.featuredImageAlt || article.title}
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+          />
+        </Link>
+      ) : (
+        <div className="h-1.5 bg-gradient-to-r from-brand-400 to-brand-600 flex-shrink-0" />
+      )}
 
       <div className="p-5 flex flex-col flex-1">
         {/* Meta row */}

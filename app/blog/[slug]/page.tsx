@@ -138,6 +138,18 @@ export default async function ArticlePage({ params }: PageProps) {
               </div>
             </header>
 
+            {/* Featured Image */}
+            {article.featuredImage && (
+              <figure className="mb-8 rounded-2xl overflow-hidden border border-gray-200/80 shadow-md bg-gray-950">
+                <img
+                  src={article.featuredImage}
+                  alt={article.featuredImageAlt || article.title}
+                  className="w-full h-auto aspect-[1200/630] object-cover"
+                  loading="eager"
+                />
+              </figure>
+            )}
+
             {/* Affiliate disclosure banner */}
             {article.affiliateDisclosure && (
               <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 text-sm text-amber-800">
